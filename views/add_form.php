@@ -1,4 +1,11 @@
 <form method="POST" action="<?= site_url(array('dashboard','article','add'))?>">
+    <?php     $csrf = array(
+        'name' => $this->security->get_csrf_token_name(),
+        'hash' => $this->security->get_csrf_hash()
+    );?>
+
+    <input type="hidden" name="<?=$csrf['name'];?>" value="<?=$csrf['hash'];?>" />
+    
     <div class="input-group" style="margin-bottom:5px;">
         <span class="input-group-addon">Name</span>
         <input name="name" class="form-control" placeholder="Eg: Tendoo CMS" value="" type="text">
